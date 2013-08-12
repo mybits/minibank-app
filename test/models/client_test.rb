@@ -18,4 +18,12 @@ class ClientTest < ActiveSupport::TestCase
   	assert c.errors[:name].empty?
   	assert c.errors[:surname].empty?
   end
+
+  test "to_s" do
+  	c = Client.create(name: "Jan",
+  										surname: "Kowal",
+  										email: "jan@op.pl",
+  										phone: "232-322-231")
+  	assert_match /Jan Kowal \(\d+\)/, c.to_s 
+  end
 end

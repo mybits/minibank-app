@@ -6,6 +6,7 @@ class AccountTest < ActiveSupport::TestCase
   													surname: "Kowal",
   													email: "jan@op.pl",
   													phone: "232-322-231")
+		@account = @client.accounts.create!
   end
 
   test "init" do
@@ -13,31 +14,20 @@ class AccountTest < ActiveSupport::TestCase
   end
 
   test "number" do
-  	a = @client.accounts.create!
-  	assert a.number.present?
-  	assert a.number > 1
+  	assert @account.number.present?
+  	assert @account.number > 1
   end
 
   test "balance is zero" do
-  	a = @client.accounts.create!
-  	assert_equal 0, a.balance
+  	assert_equal 0, @account.balance
 	end
 
 	test "balance validator" do
-  	a = @client.accounts.create!
- 		a.balance = "ala"
-  	assert a.invalid?
+	  @account.balance = "ala"
+	  assert @account.invalid?
+	  assert @account.errors[:balance].any?    
+	  @account.balance = 1000                 
+	  assert @account.valid?
+	  assert @account.errors[:balance].empty?
 	end
-
-	test "balance validator" do
-	  a = @client.accounts.create!
-	  a.balance = "ala"
-	  assert a.invalid?
-	  assert a.errors[:balance].any?    
-	  a.balance = 1000                 
-	  assert a.valid?
-	  assert a.errors[:balance].empty?
-	end
-
-
 end

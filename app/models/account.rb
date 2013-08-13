@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   belongs_to :client
+  has_many :transactions
 
   validates :balance, numericality: { only_integer: true }
 
@@ -7,6 +8,11 @@ class Account < ActiveRecord::Base
   
   def to_s
   	"[#{number}] #{balance} zł"
+  end
+
+  def update_balance!
+    sum = transactions.map { |t| t.amount }.sum
+    update_attribute(:balance, sum)
   end
 
   protected

@@ -30,4 +30,12 @@ class AccountTest < ActiveSupport::TestCase
 	  assert @account.valid?
 	  assert @account.errors[:balance].empty?
 	end
+
+  test "update_balance" do
+    @account.transactions.create(amount: 100, descr: "wpłata 1")
+    @account.transactions.create(amount: 250, descr: "wpłata 2")
+    @account.transactions.create(amount: -50, descr: "wpłata 3" ) 
+    @account.reload
+    assert_equal 300, @account.balance
+  end
 end

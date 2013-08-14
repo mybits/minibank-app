@@ -1,0 +1,23 @@
+= content_for :client, @client
+
+%h1 Lista kont klienta
+
+%table.table
+  %tr
+    %th Numer
+    %th Saldo
+    %th 
+    %th 
+
+  - @accounts.each do |account|
+    %tr
+	    %td= account.number
+	    %td= account.balance
+	    %td= link_to 'Show', [@client, account]
+	    %td= link_to 'Destroy', [@client, account], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Nowe konto', new_client_account_path(@client), class: 'btn'
+
+  

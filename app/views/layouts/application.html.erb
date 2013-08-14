@@ -27,7 +27,7 @@
 	      <div class="nav-collapse collapse">
 	      	<% if @client %>
 	        	<ul class="nav">
-	          	<li><%#= link_to 'Konta', clients_account_path(@client) %></li>
+	          	<li><%= link_to 'Konta', client_accounts_path(@client) %></li>
 	          </ul>
 	        <% end %>
 

@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
 		@transaction = @account.transactions.new(transaction_params)
 		if @transaction.save
 			msg = "Transakcja zapisana pomyślnie"
-			redirect_to account_transaction_path(@account), notice: msg
+			redirect_to client_accounts_path(@client, @account), notice: msg
 		else
 			render action: 'new'
 		end
@@ -21,4 +21,8 @@ class TransactionsController < ApplicationController
 			@account = Account.find(params[:account_id])
 			@client = @account.client
 		end
+
+		def transaction_params
+    	params.require(:transaction).permit(:amount, :descr)
+  	end
 end

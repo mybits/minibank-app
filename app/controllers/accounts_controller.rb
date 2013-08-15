@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
 	end
 
 	def show
+		@transactions = @account.transactions.order('id desc')
 	end
 
 	def create

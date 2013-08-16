@@ -5,7 +5,8 @@ class AccountTest < ActiveSupport::TestCase
 		@client = Client.create!(name: "Jan",
   													surname: "Kowal",
   													email: "jan@op.pl",
-  													phone: "232-322-231")
+  													phone: "232-322-231",
+                            password: "123123", password_confirmation: "123123")
 		@account = @client.accounts.create!
   end
 

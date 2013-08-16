@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
 	before_filter :find_account
 
 	def index
-		@transactions = @account.transactions.order('id desc')
+		@transactions = @account.transactions.order('id desc').page(params[:page])
 	end	
 
 	def new

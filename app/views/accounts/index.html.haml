@@ -9,7 +9,7 @@
     %th
     %th
 
-  - @account.each do |account|
+  - @account.each do |account|  # partial _account mi nie dziala-sprawdzic
     %tr
       %td= account.number
       %td= account.balance
@@ -17,5 +17,7 @@
       %td= link_to 'Destroy', [@client, account], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
+
+%p= paginate @account
 
 = link_to 'Nowe konto', client_accounts_path(@client), class: 'btn', method: :post

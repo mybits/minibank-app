@@ -11,3 +11,4 @@ end
 
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'kaminari'

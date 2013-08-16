@@ -2,6 +2,10 @@ class TransactionsController < ApplicationController
 
 	before_filter :find_account
 
+	def index
+		@transactions = @account.transactions.order('id desc')
+	end	
+
 	def new
 		@transaction = @account.transactions.new
 	end
@@ -10,7 +14,7 @@ class TransactionsController < ApplicationController
 		@transaction = @account.transactions.new(transaction_params)
 		if @transaction.save
 			msg = "Transakcja zapisana pomyślnie"
-			redirect_to client_accounts_path(@client, @account), notice: msg
+			redirect_to account_transactions_path(@account), notice: msg
 		else
 			render action: 'new'
 		end

@@ -1,16 +1,4 @@
 %h2= @account
 
-%p= link_to 'Dodaj transakcję', new_account_transaction_path(@account), class: 'btn'
+%p= link_to 'Lista transakcji', account_transactions_path(@account), class: 'btn'
 
-%br
-%h4 Historia transakcji
-%table.table
-	%tr
-		%th Data
-		%th Kwota
-		%th Opis
-	- @transactions.each do |transaction|
-		%tr
-			%td= I18n.l transaction.created_at
-			%td= money(transaction.amount)
-			%td= transaction.descr

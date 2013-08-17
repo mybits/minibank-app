@@ -28,11 +28,10 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @client }
+        ClientMailer.welcome(@client).deliver
+        redirect_to login_path, notice: "Proszę się zalogować."
       else
-        format.html { render action: 'new' }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+        render action: 'new' 
       end
     end
   end

@@ -1,5 +1,7 @@
 Minibank::Application.routes.draw do
   
+  resources :posts
+
   root to: 'sessions#new'
   resources :sessions
   get 'login' => 'sessions#new', :as => 'login'

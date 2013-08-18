@@ -35,6 +35,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   def update
     if @post.update(post_params)
+      expire_page action: 'show', id: params[:id]
       redirect_to @post, notice: 'Post was successfully updated.'
     else
       render action: 'edit'
@@ -56,5 +57,9 @@ class PostsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def expire_index
+      expire_page action: 'index'
     end
 end

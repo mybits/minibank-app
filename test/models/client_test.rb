@@ -24,6 +24,6 @@ class ClientTest < ActiveSupport::TestCase
   										surname: "Kowal",
   										email: "jan@op.pl",
   										phone: "232-322-231")
-  	assert_match /Jan Kowal \(\d+\)/, c.to_s 
+  	assert_match /Jan Kowal \[\d+\]/, c.to_s 
   end
 end

@@ -1,14 +1,13 @@
 class ClientsController < ApplicationController
+  skip_before_action :auth!, only: [:new, :create]
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   # GET /clients
-  # GET /clients.json
   def index
     @clients = Client.all.page(params[:page])
   end
 
   # GET /clients/1
-  # GET /clients/1.json
   def show
   end
 
@@ -22,41 +21,33 @@ class ClientsController < ApplicationController
   end
 
   # POST /clients
-  # POST /clients.json
   def create
     @client = Client.new(client_params)
 
-    respond_to do |format|
-      if @client.save
-        ClientMailer.welcome(@client).deliver
-        redirect_to login_path, notice: "Proszę się zalogować."
-      else
-        render action: 'new' 
-      end
+    if @client.save
+      ClientMailer.welcome(@client).deliver
+      redirect_to login_path, notice: 'Welcome in MiniBanku! Please login.'
+    else
+      render action: 'new' 
     end
   end
 
-  # PATCH/PUT /clients/1
-  # PATCH/PUT /clients/1.json
+  # PATCH/PUT /clients/1  
   def update
     respond_to do |format|
       if @client.update(client_params)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # DELETE /clients/1
-  # DELETE /clients/1.json
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url }
-      format.json { head :no_content }
+      format.html { redirect_to clients_url }      
     end
   end
 

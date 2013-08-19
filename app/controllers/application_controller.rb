@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
    	def auth!
  			if current_client.nil?
-    	redirect_to login_path, alert: 'Proszę się zalogować.'
+    	 redirect_to login_path, alert: 'Proszę się zalogować.'
   		end
 		end
 end

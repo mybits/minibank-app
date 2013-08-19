@@ -29,8 +29,9 @@
 	      <div class="nav-collapse collapse">
 	      	<% if current_client %>
 	        	<ul class="nav">
-	          	<li><%= link_to 'Konta', client_accounts_path(@client) %></li>
-	          	<li><%= link_to 'Wyloguj', logout_path %></li>
+	          	<li><%= link_to 'Accounts', client_accounts_path(@client) %></li>	          	
+	          	<li><%= link_to 'Posts', posts_path %></li>
+	          	<li><%= link_to 'Logout', logout_path %></li>
 	          </ul>
 	        <% end %>
 

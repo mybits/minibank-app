@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
 	def create
 		@transaction = @account.transactions.new(transaction_params)
 		if @transaction.save
-			msg = "Transakcja zapisana pomyślnie"
+			msg = 'Transaction was successfully saved.'
 			redirect_to account_transactions_path(@account), notice: msg
 		else
 			render action: 'new'

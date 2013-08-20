@@ -23,6 +23,7 @@
 	        <span class="icon-bar"></span>
 	      </button>
 	      <a class="brand" href="/">MinibankApp</a>
+	      <!-- <a class="brand"><%= link_to 'Posts', posts_path %></a> -->
 	      <% if current_client %>
 	      	<a class="brand" href="#"><%= yield :client %></a>
 	      <% end %>
@@ -30,7 +31,6 @@
 	      	<% if current_client %>
 	        	<ul class="nav">
 	          	<li><%= link_to 'Accounts', client_accounts_path(@client) %></li>	          	
-	          	<li><%= link_to 'Posts', posts_path %></li>
 	          	<li><%= link_to 'Logout', logout_path %></li>
 	          </ul>
 	        <% end %>

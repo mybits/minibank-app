@@ -9,6 +9,7 @@ Minibank::Application.routes.draw do
   
   resources :clients do
     resources :accounts
+    resources :posts
   end
 
   resources :accounts do

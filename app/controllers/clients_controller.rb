@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       ClientMailer.welcome(@client).deliver
-      redirect_to login_path, notice: 'Welcome in MiniBank! Please login.'
+      redirect_to login_path, notice: 'Welcome to MiniBank! Please login.'
     else
       render action: 'new' 
     end

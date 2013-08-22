@@ -9,5 +9,28 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap
  *= require_tree .
  */
+
+
+/*Bootstrap overrides*/
+
+
+.navbar .brand {
+	color: rgb(83, 126, 129);
+}
+
+.brand {
+	color: rgb(61, 59, 59);
+}
+
+
+.brand:hover {
+	background-color: #ffffff;
+	color: rgb(83, 126, 129);
+}
+
+h1, h2, h3 {
+	color: rgb(88, 88, 88);
+}
